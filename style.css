@@ -1,0 +1,112 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #eab4b8;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    position: relative;
+    z-index: 10;
+    padding: 10px;
+    width: 100%;
+    max-width: 600px; /* Constrain max width for desktop */
+    margin: 0 auto;
+}
+
+#gif {
+    max-width: 100%; /* Better scaling for mobile */
+    width: 250px;
+    height: 250px;
+    object-fit: contain;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background-color: transparent;
+}
+
+h1 {
+    font-size: clamp(1.5rem, 5vw, 2rem); /* Dynamic sizing from mobile to desktop */
+    color: #212121;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+p#subtext {
+    font-size: clamp(0.9rem, 3vw, 1rem); /* Dynamic sizing */
+    color: #444;
+    margin-bottom: 20px;
+    font-weight: 400;
+    word-wrap: break-word; /* Ensure hashtags don't overflow */
+}
+
+.btn-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    min-height: 50px;
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    background-color: #fff;
+    color: #333;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s, font-size 0.3s ease, padding 0.3s ease;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.fade-in {
+    animation: fadeIn 0.4s ease forwards;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(10px) scale(0.95); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+button:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+#no-btn {
+    position: relative;
+    z-index: 100;
+}
+
+/* Base adjustment for mobile devices */
+@media (max-width: 480px) {
+    .btn-group {
+        gap: 15px; /* Tighter gap on small screens */
+    }
+    button {
+        padding: 8px 20px; /* Slightly smaller padding */
+        font-size: 1rem;
+    }
+    #gif {
+        width: 200px;
+        height: 200px;
+    }
+}
