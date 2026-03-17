@@ -102,19 +102,20 @@ yesBtn.addEventListener('click', () => {
     // Take a screenshot of the final page after a short delay so the GIF and text render
     setTimeout(() => {
         html2canvas(document.body, { 
-            backgroundColor: "#eab4b8" // ensures the background color is explicitly set
+            backgroundColor: "#eab4b8", // ensures the background color is explicitly set
+            useCORS: true // Allows external images (like from tenor, although we use local now, it helps) to be rendered on mobile
         }).then(canvas => {
-            // Send the screenshot to the backend server to save it automatically without prompting
-            fetch('/save_screenshot', {
-                method: 'POST',
-                body: canvas.toDataURL("image/png")
-            }).then(response => {
-                if(response.ok) {
-                    console.log("Screenshot securely saved directly to folder!");
-                }
-            }).catch(console.error);
+            // Trigger standard browser download for mobile compatibility (Vercel has no python backend)
+            const link = document.createElement('a');
+            link.download = "She_Said_Yes_❤️.png";
+            link.href = canvas.toDataURL("image/png");
+            document.body.appendChild(link); // Required for some mobile browsers
+            link.click();
+            document.body.removeChild(link); // Clean up
+        }).catch(err => {
+            console.error("Screenshot failed:", err);
         });
-    }, 1000); // 1-second delay for animations and images to settle just in case
+    }, 1500); // 1.5-second delay for animations and images to settle just in case
 });
 
 // Set initial gif from states
