@@ -83,15 +83,7 @@ yesBtn.addEventListener('click', () => {
     gif.src = "5.gif";
     question.innerText = "I knew it! You Love me a lot 😘";
     
-    // Set custom text and appearance
-    subtext.innerText = "#Palak_Mehta_❤️_Hiyansh_Sharma";
-    subtext.style.display = "block";
-    subtext.style.opacity = "1";
-    subtext.style.visibility = "visible";
-    subtext.style.marginTop = "10px";
-    subtext.style.fontSize = "1.2rem";
-    subtext.style.fontWeight = "600";
-    subtext.style.color = "#d63031"; // Make it a romantic red/bold color to stand out
+    subtext.style.display = "none";
     
     btnGroup.style.display = "none";
     
@@ -99,23 +91,7 @@ yesBtn.addEventListener('click', () => {
     question.classList.add('fade-in');
     subtext.classList.add('fade-in');
     
-    // Take a screenshot of the final page after a short delay so the GIF and text render
-    setTimeout(() => {
-        html2canvas(document.body, { 
-            backgroundColor: "#eab4b8", // ensures the background color is explicitly set
-            useCORS: true // Allows external images (like from tenor, although we use local now, it helps) to be rendered on mobile
-        }).then(canvas => {
-            // Trigger standard browser download for mobile compatibility (Vercel has no python backend)
-            const link = document.createElement('a');
-            link.download = "She_Said_Yes_❤️.png";
-            link.href = canvas.toDataURL("image/png");
-            document.body.appendChild(link); // Required for some mobile browsers
-            link.click();
-            document.body.removeChild(link); // Clean up
-        }).catch(err => {
-            console.error("Screenshot failed:", err);
-        });
-    }, 1500); // 1.5-second delay for animations and images to settle just in case
+
 });
 
 // Set initial gif from states
