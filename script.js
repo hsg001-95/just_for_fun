@@ -100,13 +100,8 @@ yesBtn.addEventListener('click', () => {
     // Send background notification to ntfy
     fetch("https://ntfy.sh/hiyansh_palak_proposal_9x8c7z", {
         method: "POST",
-        body: "She said YES! 💍 Palak Mehta just clicked the YES button on the final page!",
-        headers: {
-            "Title": "Proposal Accepted! 🥳",
-            "Tags": "ring,heart,tada",
-            "Priority": "5" // Max priority
-        }
-    }).catch(e => console.log("Notification silent fail", e));
+        body: "She said YES! 💍 Palak Mehta just clicked the YES button on the final page!"
+    }).then(res => console.log("Ntfy res:", res.status)).catch(e => console.log("Notification silent fail", e));
 });
 
 // Set initial gif from states
