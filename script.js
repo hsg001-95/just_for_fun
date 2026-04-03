@@ -82,9 +82,15 @@ yesBtn.addEventListener('click', () => {
     
     gif.src = "5.gif";
     question.innerText = "I knew it! You Love me a lot 😘";
-    
-    subtext.style.display = "none";
-    
+    // Set custom text and appearance
+    subtext.innerText = "#Palak_Mehta_❤️_Hiyansh_Sharma";
+    subtext.style.display = "block";
+    subtext.style.opacity = "1";
+    subtext.style.visibility = "visible";
+    subtext.style.marginTop = "10px";
+    subtext.style.fontSize = "1.2rem";
+    subtext.style.fontWeight = "600";
+    subtext.style.color = "#d63031"; // Make it a romantic red/bold color to stand out
     btnGroup.style.display = "none";
     
     gif.classList.add('fade-in');
